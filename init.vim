@@ -1,13 +1,15 @@
 set number
 set autoindent
 
-colorscheme darkest-space
 
 set tabstop=2 shiftwidth=2 noexpandtab
 
-set runtimepath+=~/.config/nvim/dein/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim
 
-call dein#begin(expand('~/.config/nvim/dein'))
+call dein#begin(expand('~/.config/nvim'))
+
+call dein#add('szorfein/darkest-space')
+colorscheme darkest-space
 
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/deoplete.nvim')
@@ -16,7 +18,7 @@ call dein#add('roxma/vim-hug-neovim-rpc')
 "call dein#add('Shougo/neco-vim')
 "call dein#add('Shougo/neco-syntax')
 call dein#add('zchee/deoplete-jedi')
-
+call dein#add('vim-airline/vim-airline')
 call dein#add('nathanaelkane/vim-indent-guides')
 
 
@@ -44,6 +46,15 @@ let g:deoplete#complete_method = "omnifunc"
 "neocom
 
 let python_highlight_all = 1
+
+syn match pythonOperator "\(+\|=\|-\|\^\|\*\)"
+syn match pythonDelimiter "\(,\|\.\|:\)"
+syn keyword pythonSpecialWord self
+
+hi link pythonSpecialWord    Special
+hi link pythonDelimiter      Special
+
+let b:current_after_syntax = 'python'
 
 "hi CursorColumn guibg=#888888
 "hi CursorLine guibg=#888888
